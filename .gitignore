@@ -1,0 +1,18 @@
+# Docker
+*.log
+docker-compose.override.yml
+__pycache__/
+
+# Python
+*.pyc
+*.pyo
+*.pyd
+env/
+venv/
+
+# Ansible
+*.retry
+
+# OS/Editor specific
+.DS_Store
+.idea/
