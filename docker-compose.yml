@@ -1,0 +1,21 @@
+version: '3.8'
+services:
+  web:
+    image: nginx:latest
+    container_name: prototube_web
+    ports:
+      - '8080:80'
+    volumes:
+      - ./app:/usr/share/nginx/html
+    restart: always
+  db:
+    image: mysql:latest
+    container_name: prototube_db
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_DATABASE: prototube_db
+      MYSQL_USER: admin
+      MYSQL_PASSWORD: password
+    ports:
+      - '3306:3306'
+    restart: always
