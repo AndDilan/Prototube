@@ -1,0 +1,15 @@
+all:
+  children:
+    backend:
+      hosts:
+        127.0.0.1
+    storage:
+      hosts:
+        127.0.0.1
+    database:
+      hosts:
+        127.0.0.1
+    frontend:
+      hosts:
+        127.0.0.1
+

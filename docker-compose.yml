@@ -1,30 +1,31 @@
-version: '3.8'
+version: "3.8"
 
 services:
-  web:
-    image: nginx:latest
-    container_name: prototube_web
-    ports:
-      - "8080:80"
-    volumes:
-      - ./app:/usr/share/nginx/html
-    restart: always
-
-  db:
-    image: mysql:latest
+  prototube_db:
+    image: mariadb:latest
     container_name: prototube_db
     environment:
-      MYSQL_ROOT_PASSWORD: rootpassword
-      MYSQL_DATABASE: prototube_db
-      MYSQL_USER: admin
-      MYSQL_PASSWORD: password
+      MARIADB_ROOT_PASSWORD: root
+      MARIADB_DATABASE: prototube_db
+      MARIADB_USER: admin
+      MARIADB_PASSWORD: password
     ports:
       - "3306:3306"
-    restart: always
+    networks:
+      - prototube_network
 
-  backend:
+  prototube_backend:
     build: ./backend
     container_name: prototube_backend
     ports:
-      - "5000:80"
-    restart: always
+      - "5000:5000"
+    volumes:
+      - ./backend:/app
+    networks:
+      - prototube_network
+    depends_on:
+      - prototube_db
+
+networks:
+  prototube_network:
+    driver: bridge
