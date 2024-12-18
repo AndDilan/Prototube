@@ -18,11 +18,7 @@ Tout d’abord, il y aura un playbook central, servira à “diriger” le dépl
 Les playbooks pour le déploiement automatisé : 
 Ces playbooks seront au minimum au nombre de 4: un pour chacun des conteneurs soit Frontend, Backend, BDD et le stockage de vidéo. Grâce à ces playbooks, l’ensemble de mon infrastructure pourra être déployé en un seul clic, facilitant ainsi les démonstrations et simplifiant le processus d'installation.
 
-3. Estimation du Temps de Développement
-Pour ce projet j’estime le temps à environ 2 semaines en me basant sur le TP que nous avons effectué précédemment. Mais l’hébergement de vidéo étant une notion totalement nouvelle il fort possible que j'estime mal ce temps.
-
 4. Livrables
 A la fin du projet les éléments suivant vous seront fournis: 
 -Les Playbooks Ansible pour le déploiement automatisé de l’infrastructure.
--Lien Git pour un suivi régulier du projet en temps réel.
 -Une présentation et démonstration du projet à son état d’avancement à la date finale 
