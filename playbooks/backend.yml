@@ -1,0 +1,44 @@
+---
+- name: Déploiement du Backend Prototube
+  hosts: backend
+  become: true
+  tasks:
+
+    - name: Créer le répertoire Backend
+      file:
+        path: ~/Bureau/prototube/backend
+        state: directory
+
+    - name: Copier le fichier app.py
+      copy:
+        src: ../backend/app.py
+        dest: ~/Bureau/prototube/backend/app.py
+
+    - name: Copier le Dockerfile
+      copy:
+        src: ../backend/Dockerfile
+        dest: ~/Bureau/prototube/backend/Dockerfile
+
+    - name: Installer la collection Docker pour Ansible
+      command: ansible-galaxy collection install community.docker
+      args:
+        creates: ~/.ansible/collections/ansible_collections/community/docker
+
+    - name: Construire l'image Docker pour le Backend
+      community.docker.docker_image:
+        build:
+          path: ~/Bureau/prototube/backend
+        name: prototube_backend
+        source: build
+
+    - name: Démarrer le conteneur Backend
+      community.docker.docker_container:
+        name: prototube_backend
+        image: prototube_backend
+        state: started
+        ports:
+          - "5000:5000"
+        networks:
+          - name: prototube_network
+        env:
+          FLASK_ENV: development

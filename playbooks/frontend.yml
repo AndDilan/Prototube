@@ -1,0 +1,15 @@
+---
+- name: Déploiement du Frontend Prototube
+  hosts: frontend
+  become: yes
+  tasks:
+    - name: Déployer le conteneur Frontend
+      docker_container:
+        name: prototube_frontend
+        image: httpd:2.4
+        networks:
+          - name: prototube_network
+        ports:
+          - "80:80"
+        volumes:
+          - /chemin/vers/frontend:/usr/local/apache2/htdocs

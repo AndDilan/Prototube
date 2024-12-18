@@ -1,0 +1,20 @@
+---
+- name: Déploiement du stockage vidéo MinIO
+  hosts: storage
+  become: yes
+  tasks:
+    - name: Déployer MinIO dans un conteneur Docker
+      docker_container:
+        name: prototube_storage
+        image: minio/minio
+        networks:
+          - name: prototube_network
+        ports:
+          - "9000:9000"
+        volumes:
+          - /chemin/vers/storage:/data
+        env:
+          MINIO_ROOT_USER: "admin"
+          MINIO_ROOT_PASSWORD: "password"
+        command: server /data --console-address ":9001"
+
