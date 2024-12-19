@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prototube</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+        }
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 10px 20px;
+            display: flex;
+            align-items: center;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 24px;
+        }
+        main {
+            display: flex;
+            flex: 1;
+        }
+        aside {
+            width: 25%;
+            background-color: #f4f4f4;
+            overflow-y: auto;
+            padding: 20px;
+        }
+        aside ul {
+            list-style: none;
+            padding: 0;
+        }
+        aside ul li {
+            padding: 10px;
+            cursor: pointer;
+            background: #ddd;
+            margin-bottom: 10px;
+            border-radius: 5px;
+        }
+        aside ul li:hover {
+            background: #ccc;
+        }
+        section {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            background-color: #fff;
+        }
+        iframe {
+            width: 80%;
+            height: 80%;
+            border: none;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Prototube</h1>
+    </header>
+    <main>
+        <aside>
+            <h2>Liste des vidéos</h2>
+            <ul id="video-list">
+                <!-- Les vidéos seront ajoutées dynamiquement -->
+            </ul>
+        </aside>
+        <section>
+            <iframe id="video-frame" src="" title="Lecture vidéo"></iframe>
+        </section>
+    </main>
+    <script>
+        const videos = [
+            { id: 1, title: "Vidéo 1", url: "https://www.example.com/video1.mp4" },
+            { id: 2, title: "Vidéo 2", url: "https://www.example.com/video2.mp4" },
+        ];
+
+        const videoList = document.getElementById('video-list');
+        const videoFrame = document.getElementById('video-frame');
+
+        videos.forEach(video => {
+            const li = document.createElement('li');
+            li.textContent = video.title;
+            li.onclick = () => {
+                videoFrame.src = video.url;
+            };
+            videoList.appendChild(li);
+        });
+    </script>
+</body>
+</html>
