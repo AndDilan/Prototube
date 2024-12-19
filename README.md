@@ -1,3 +1,5 @@
+Cahier des charges: 
+
 1.  Les objectifs et le contexte
 Mon projet consiste à développer une plateforme web de vidéo complète, pouvant servir de base à quiconque voudrait développer sa plateforme de streaming (type Youtube). Elle sera déployée via des conteneurs Docker et automatisée avec Ansible. Je voudrais parvenir à ce qu’elle permette aux utilisateurs d’uploader, de visionner en ligne, de partager (via lien), et de télécharger des vidéos.
 Mon projet vise à répondre au besoin de plateforme de streaming personnalisable pour divers domaine tel que: l’éducation, les entreprises ou le divertissement. Comme je l’ai précisé précédemment il servira de bases aux développeurs ou aux organisations qui souhaiteraient proposer leur propre contenu sans dépendre de plateformes externes, cela leur permettrait de garder un contrôle total sur les données ainsi que sur la personnalisation de l’interface.
@@ -22,3 +24,45 @@ Ces playbooks seront au minimum au nombre de 4: un pour chacun des conteneurs so
 A la fin du projet les éléments suivant vous seront fournis: 
 -Les Playbooks Ansible pour le déploiement automatisé de l’infrastructure.
 -Une présentation et démonstration du projet à son état d’avancement à la date finale 
+
+
+Tuto d'installation et d'utilisation de Prototube:
+
+1. Pré-requis
+Assurez-vous que Docker, Docker Compose et Ansible sont installés sur votre machine.
+Récupérer le dossier sur git et placer le ici:
+~/Bureau/prototube
+
+2. Déployer les conteneurs avec les playbooks
+
+a. Déployer le Backend :
+Positionnez-vous dans le dossier contenant les playbooks :
+cd ~/Bureau/prototube
+ansible-playbook -i inventory.yml playbooks/backend.yml
+
+b. Déployer le Frontend :
+Toujours dans le même dossier, exécutez :
+ansible-playbook -i inventory.yml playbooks/frontend.yml
+
+Ensuite dans ~/Bureau/prototube/prototube_frontend/frontend, exécutez la commande npm start ce qui va démarrer notre appli node.js (Frontend du site en React.js) permettant d'afficher l'interface utilisateur sur http://localhost:3000.
+
+3. Tester l'installation
+   
+Backend : Ouvrez votre navigateur et accédez à http://127.0.0.1:5000. Vous devriez voir un message indiquant :
+{"message": "Backend API Prototube fonctionne !"}
+Frontend : Accédez à http://localhost:3000. La page React devrait s'afficher.
+Vérifier les vidéos :
+Assurez-vous que les vidéos sont listées correctement en testant :
+http://127.0.0.1:5000/videos.
+
+4. Structure des dossiers
+   
+Projet principal : ~/Bureau/prototube
+Playbooks Ansible : ~/Bureau/prototube/playbooks/
+Backend : ~/Bureau/prototube/backend/
+Frontend : ~/Bureau/prototube/frontend/
+
+5. Ajout de vidéo
+   
+Pour pouvoir ajouter une vidéo en ligne il vous suffit de mettre cette dernière dans le dossier “~/Bureau/prototube/backend/videos. Ensuite recharger la page web http://localhost:3000 pour que cette dernière apparaisse sur Prototube.
+Visionnage de vidéo en ligne, pour faire cela il vous suffit de cliquer sur la vidéo que vous souhaitez visonné et TADAM elle apparaît sur la page de Prototube.
