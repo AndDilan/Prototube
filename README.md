@@ -36,11 +36,15 @@ Récupérer le dossier sur git et placer le ici:
 2. Déployer les conteneurs avec les playbooks
 
 a. Déployer le Backend :
+
 Positionnez-vous dans le dossier contenant les playbooks :
 cd ~/Bureau/prototube
+
+Et exécutez cette commande :
 ansible-playbook -i inventory.yml playbooks/backend.yml
 
 b. Déployer le Frontend :
+
 Toujours dans le même dossier, exécutez :
 ansible-playbook -i inventory.yml playbooks/frontend.yml
 
@@ -50,7 +54,9 @@ Ensuite dans ~/Bureau/prototube/prototube_frontend/frontend, exécutez la comman
    
 Backend : Ouvrez votre navigateur et accédez à http://127.0.0.1:5000. Vous devriez voir un message indiquant :
 {"message": "Backend API Prototube fonctionne !"}
+
 Frontend : Accédez à http://localhost:3000. La page React devrait s'afficher.
+
 Vérifier les vidéos :
 Assurez-vous que les vidéos sont listées correctement en testant :
 http://127.0.0.1:5000/videos.
@@ -68,4 +74,5 @@ Frontend : ~/Bureau/prototube/frontend/
 5. Ajout de vidéo
    
 Pour pouvoir ajouter une vidéo en ligne il vous suffit de mettre cette dernière dans le dossier “~/Bureau/prototube/backend/videos. Ensuite recharger la page web http://localhost:3000 pour que cette dernière apparaisse sur Prototube.
+
 Visionnage de vidéo en ligne, pour faire cela il vous suffit de cliquer sur la vidéo que vous souhaitez visonné et TADAM elle apparaît sur la page de Prototube.
