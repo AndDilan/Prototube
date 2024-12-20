@@ -82,6 +82,6 @@ Frontend : ~/Bureau/prototube/frontend/
 
 5. Ajout de vidéo
    
-Pour pouvoir ajouter une vidéo en ligne il vous suffit de mettre cette dernière dans le dossier “~/Bureau/prototube/backend/videos. Ensuite recharger la page web http://localhost:3000 pour que cette dernière apparaisse sur Prototube.
+Pour pouvoir ajouter une vidéo en ligne il vous suffit de mettre cette dernière dans le dossier “~/Bureau/prototube/backend/videos". Ensuite recharger la page web http://localhost:3000 pour que cette dernière apparaisse sur Prototube.
 
 Visionnage de vidéo en ligne, pour faire cela il vous suffit de cliquer sur la vidéo que vous souhaitez visonné et TADAM elle apparaît sur la page de Prototube.
