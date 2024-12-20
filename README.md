@@ -58,8 +58,11 @@ http://127.0.0.1:5000/videos.
 4. Structure des dossiers
    
 Projet principal : ~/Bureau/prototube
+
 Playbooks Ansible : ~/Bureau/prototube/playbooks/
+
 Backend : ~/Bureau/prototube/backend/
+
 Frontend : ~/Bureau/prototube/frontend/
 
 5. Ajout de vidéo
